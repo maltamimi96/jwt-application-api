@@ -1,5 +1,6 @@
 class AskController < ApplicationController
-  before_action :set_question,only:[:show]
+    before_action :authenticate_user,except:[:index,:show]
+    before_action :set_question,only:[:show]
   
     def index
         @question =Question.all
@@ -8,7 +9,7 @@ class AskController < ApplicationController
 
 
     def create 
-        @question=Question.create(question_params)
+        @question=current_user.questions.create(question_params)
         if @question.errors.any?
             render json:@question.errors,status: :unprocessable_entity
         else
@@ -28,7 +29,7 @@ class AskController < ApplicationController
 
     private
     def question_params
-        params.require(:question).permit(:category_id,:title,:body)
+        params.require(:ask).permit(:user_id,:category_id,:title,:body)
     end
     def set_question
         @question = Question.find(params[:id])
