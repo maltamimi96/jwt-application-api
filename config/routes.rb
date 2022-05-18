@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  scope '/auth' do
+    post'/sign_up',to: 'users#create'
+  end
 end

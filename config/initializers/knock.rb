@@ -1,4 +1,8 @@
+
+  require 'knock/version'
+  require 'knock/authenticable'
 Knock.setup do |config|
+
 
   ## Expiration claim
   ## ----------------

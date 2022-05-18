@@ -1,0 +1,10 @@
+POST http://127.0.0.1:3000/auth/sign_up
+Content-Type: application/json
+
+{
+    "username":"jack",
+    "email":"234@gmail.com",
+    "password": "password2",
+    "password_confirmation": "password2"
+
+}
