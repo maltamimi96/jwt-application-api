@@ -8,8 +8,8 @@ scope '/questions' do
   get '/all' ,to: 'ask#index'
   post '/ask' ,to:'ask#create'
   get'/question/:id', to:'ask#show'
-  put'/update/:id', to:'ask#update'
-  delete'/question/:id', to:'ask#destroy'
+  put'/ask/:id', to:'ask#update'
+  delete'/ask/:id', to:'ask#delete'
 end
 
 
