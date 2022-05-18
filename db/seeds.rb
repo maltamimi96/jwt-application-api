@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+question_category = ["fiqh","aqeeda"]
+
+
+if Category.all.length == 0
+    question_category.each do |category|
+        Category.create(name: category)
+        puts "created #{category} category"
+    end
+end    
