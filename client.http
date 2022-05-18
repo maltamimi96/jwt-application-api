@@ -1,10 +1,14 @@
-POST http://127.0.0.1:3000/auth/sign_up
+
+
+#create user
+
+
+##Login with correct details
+POST http://127.0.0.1:3000/auth/sign_in
 Content-Type: application/json
 
 {
-    "username":"jack",
-    "email":"234@gmail.com",
-    "password": "password2",
-    "password_confirmation": "password2"
+    "email":"2345@gmail.com",
+    "password": "password2"
 
 }
