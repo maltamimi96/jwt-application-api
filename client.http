@@ -8,8 +8,8 @@ POST http://127.0.0.1:3000/auth/sign_in
 Content-Type: application/json
 
 {
-    "email":"2345@gmail.com",
-    "password": "password2"
+	"email":"s90six@gmail.com",
+	"password":"pword"
 
 }
 
