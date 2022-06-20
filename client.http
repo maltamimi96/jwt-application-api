@@ -9,9 +9,23 @@ Content-Type: application/json
 
 {
 	"email":"s90six@gmail.com",
-	"password":"pword"
+	"password":"pword1"
 
 }
 
 
+
+POST http://127.0.0.1:3000/question/ask
+Content-Type: application/json
+
+{
+	
+	
+	"user_id":1,
+	"category_id":1,
+	"title":"From Post Man 2",
+	"body":"This Came From Post Man"
+	
+
+}
 

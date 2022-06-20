@@ -34,11 +34,12 @@ class AskController < ApplicationController
     end
     
     def destroy
-    @joke.delete
+    @question.delete
     render json: 204
     end
 
-
+    def my_questions
+    end
 
 
 
@@ -54,7 +55,7 @@ class AskController < ApplicationController
 
     
     def check_ownership
-        if current_user.id !=@joke.user.id
+        if current_user.id !=@question.user.id
             render json:{error:"no permission"},status:401
         end 
     end

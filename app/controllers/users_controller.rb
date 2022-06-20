@@ -16,7 +16,7 @@ def sign_in
     @user=User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])
         auth_token = Knock::AuthToken.new payload: {sub: @user.id}
-        render json:{username:@user.username,jwt: auth_token.token},status: 200
+        render json:{username:@user.username,jwt: auth_token.token ,id: @user.id},status: 200
     else
         render json: {error: "Incorrect Username or Password"},status: 400
     end 
