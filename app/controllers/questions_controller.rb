@@ -1,7 +1,7 @@
-class AskController < ApplicationController
+class QuestionsController < ApplicationController
     before_action :authenticate_user,except:[:index,:show]
-    before_action :set_question,only:[:show]
-    before_action :check_ownership,only: [:update,:destroy]
+    before_action :set_question,only:[:show, :update, :destroy]
+    #before_action :check_ownership,only: [:update, :destroy]
   
     def index
         @question =Question.all
@@ -19,10 +19,13 @@ class AskController < ApplicationController
         end
     end
 
-
     def show
-        render json: @question.transform_question
-    end
+        if @question
+          render json: @question.transform_question
+        else
+          render json: {"error": "Question not found, wrong id"}, status: :not_found
+        end
+      end
 
     def update
         @question.update(question_params)
@@ -34,28 +37,22 @@ class AskController < ApplicationController
     end
     
     def destroy
-    @question.delete
-    render json: 204
+        @question.destroy
+        render json: 204
     end
-
-    def my_questions
-    end
-
 
 
     private
     def question_params
-        params.require(:ask).permit(:user_id,:category_id,:title,:body)
+        params.require(:question).permit(:user_id,:category_id,:title,:body)
     end
     def set_question
-        @question = Question.find(params[:id])
+        @question = Question.find_by_id(params[:id])
     #its called before so render in method
     end
 
-
-    
     def check_ownership
-        if current_user.id !=@question.user.id
+        if current_user.id !=@question.users.id
             render json:{error:"no permission"},status:401
         end 
     end

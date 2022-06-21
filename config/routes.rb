@@ -4,15 +4,16 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-scope '/questions' do
-  get '/all' ,to: 'ask#index'
-  post '/ask' ,to:'ask#create'
-  get'/question/:id', to:'ask#show'
-  put'/edit/:id', to:'ask#update'
-  delete'/delete/:id', to:'ask#destroy'
+# scope '/questions' do
+#   get '/all' ,to: 'ask#index'
+#   post '/ask' ,to:'ask#create'
+#   get'/question/:id', to:'ask#show'
+#   put'/edit/:id', to:'ask#update'
+#   delete '/delete/:id', to:'ask#destroy'
 
     
-end
+# end
+resources :questions
 
 scope '/auth' do
   post'/sign_up',to: 'users#create'
@@ -21,3 +22,5 @@ end
 
 
 end
+
+

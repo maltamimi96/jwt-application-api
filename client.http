@@ -15,7 +15,7 @@ Content-Type: application/json
 
 
 
-POST http://127.0.0.1:3000/question/ask
+POST http://127.0.0.1:3000/questions/ask
 Content-Type: application/json
 
 {
