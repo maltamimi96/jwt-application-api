@@ -9,7 +9,8 @@ class Question < ApplicationRecord
       title: self.title,
       body: self.body,
       posted: self.created_at,
-      edited: self.updated_at
+      edited: self.updated_at,
+      user_id: self.user.id
 
     }
   end

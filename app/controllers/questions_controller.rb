@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
     before_action :authenticate_user,except:[:index,:show]
     before_action :set_question,only:[:show, :update, :destroy]
-    #before_action :check_ownership,only: [:update, :destroy]
+    before_action :check_ownership,only: [:update, :destroy]
   
     def index
         @question =Question.all
@@ -52,7 +52,7 @@ class QuestionsController < ApplicationController
     end
 
     def check_ownership
-        if current_user.id !=@question.users.id
+        if current_user.id !=@question.user_id
             render json:{error:"no permission"},status:401
         end 
     end
